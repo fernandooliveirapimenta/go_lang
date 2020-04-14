@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strings"
 )
 
 func main() {
@@ -63,48 +62,48 @@ func main() {
 
 	// Working with slices
 	fmt.Println()
-	if longest := findLongest(getPassedArgs(3)); len(longest) > 0 {
-		fmt.Println("The longest word passed was:", longest)
-	} else {
-		fmt.Println("There wa an error")
-	}
+	//if longest := findLongest(getPassedArgs(3)); len(longest) > 0 {
+	//	fmt.Println("The longest word passed was:", longest)
+	//} else {
+	//	fmt.Println("There wa an error")
+	//}
 
 	// Activity Printing a user name based on user input
-	fmt.Println()
-	mapUsers := map[string]string{
-		"305":"Sue",
-		"204":"Bob",
-		"631":"Jake",
-		"073":"Tracy",
-	}
-
-	if len(os.Args) > 0 {
-		arg := os.Args[1]
-	    fmt.Println("Hi,", mapUsers[arg])
-	}
+	//fmt.Println()
+	//mapUsers := map[string]string{
+	//	"305":"Sue",
+	//	"204":"Bob",
+	//	"631":"Jake",
+	//	"073":"Tracy",
+	//}
+	//
+	//if len(os.Args) == 1 {
+	//	arg := os.Args[1]
+	//    fmt.Println("Hi,", mapUsers[arg])
+	//}
 
 
 	// Appendis multiple items to a slice
-	locales := getLocals(getPassegArgs())
-	fmt.Println("Locales to use:", locales)
+	//locales := getLocals(getPassegArgs())
+	//fmt.Println("Locales to use:", locales)
 
 
 	// Creting a locale checker
-	if len(os.Args) > 0 {
-		localeParts := strings.Split(os.Args[1], "_")
-		if len(localeParts) == 2 {
-			parsed := locale{
-				territory: localeParts[1],
-				lenguage: localeParts[0],
-			}
-
-			if !localeExists(parsed) {
-				fmt.Printf("Locale not supported: %v\n", os.Args[1])
-			} else {
-				fmt.Println("Locale passed is supported")
-			}
-		}
-	}
+	//if len(os.Args) == 1 {
+	//	localeParts := strings.Split(os.Args[1], "_")
+	//	if len(localeParts) == 2 {
+	//		parsed := locale{
+	//			territory: localeParts[1],
+	//			lenguage: localeParts[0],
+	//		}
+	//
+	//		if !localeExists(parsed) {
+	//			fmt.Printf("Locale not supported: %v\n", os.Args[1])
+	//		} else {
+	//			fmt.Println("Locale passed is supported")
+	//		}
+	//	}
+	//}
 
 	// Creating slices from a slice
 	fmt.Println()
@@ -135,8 +134,40 @@ func main() {
 	fmt.Println("Append No Link:", a1, a2)
 
 
+	// Creating, Reading, and Writing a map
+
+	fmt.Println("Users:",getUsers())
+	fmt.Println(getUser("305"))
+	for key, value := range getUsers() {
+		fmt.Println("Id:",key,"Name:",value)
+	}
 
 
+	// Slicing the week
+
+	week := []string{"Monday",
+		"Tuesday",
+		"Wednesday","Thursday","Friday", "Saturday", "Sunday"}
+	weekP1 := append(week[6:], week[:6]... )
+	fmt.Println(weekP1)
+
+
+
+}
+
+func getUser(id string) (string, bool) {
+   user, exist := getUsers()[id]
+   return user, exist
+}
+
+func getUsers() map[string]string{
+	users := map[string]string{
+		"305": "Sue",
+		"204": "Bob",
+		"631": "Jake",
+	}
+	users["073"] = "Tracy"
+	return users
 }
 
 func appendNoLink() (int,int) {
