@@ -1,10 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/fernandooliveirapimenta/go_lang/utils"
+)
 
 func main() {
+
 	// Looping over map data using range
 
+	fmt.Print(utils.Hoje())
 	words := map[string]int{
 		"Gonna": 3,
 		"You": 3,

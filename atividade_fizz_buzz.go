@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"gaviao"
+)
 
 func main() {
 
+	fmt.Printf(gaviao.Nome)
 	for i := 1 ; i <= 100; i++ {
 
 		divisivel3 := i % 3 == 0
